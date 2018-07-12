@@ -91,14 +91,15 @@ print(areas)
 ```{python}
 objs = ["hall", "kit", "liv", "bed", "bath"]
 predef_msg = "Don't remove or edit the predefined variables!"
-areas_msg = "Define `areas` as the list containing all the area variables, in the correct order: `hall`, `kit`, `liv`, `bed` and `bath`. Watch out for typos. The list doesn't have to contain anything else."
+areas_msg = "Define `areas` as the list containing all the area variables, in the correct order: `[hall, kit, liv, bed, bath]`. Watch out for typos. The list doesn't have to contain anything else."
 
 Ex().test_correct(
-  check_object("areas").has_equal_value(incorrect_msg = areas_msg),
-  multi([ check_object(obj, missing_msg = predef_msg).has_equal_value(incorrect_msg = predef_msg) for obj in objs])
+    has_printout(0, not_printed_msg = "__JINJA__:Have you used `{{sol_call}}` to print out the `areas` list at the end of your script?"),
+    test_correct(
+        check_object("areas").has_equal_value(incorrect_msg = areas_msg),
+        multi([ check_object(obj, missing_msg = predef_msg).has_equal_value(incorrect_msg = predef_msg) for obj in objs])
+    )
 )
-
-Ex().has_printout(0, not_printed_msg = "__JINJA__:Have you used `{{sol_call}}` to print out the `areas` list at the end of your script?")
 
 success_msg("Nice! A list is way better here, isn't it?")
 ```
