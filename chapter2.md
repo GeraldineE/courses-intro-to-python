@@ -95,7 +95,7 @@ areas_msg = "Define `areas` as the list containing all the area variables, in th
 
 Ex().test_correct(
     has_printout(0, not_printed_msg = "__JINJA__:Have you used `{{sol_call}}` to print out the `areas` list at the end of your script?"),
-    test_correct(
+    F().test_correct(
         check_object("areas").has_equal_value(incorrect_msg = areas_msg),
         multi([ check_object(obj, missing_msg = predef_msg).has_equal_value(incorrect_msg = predef_msg) for obj in objs])
     )

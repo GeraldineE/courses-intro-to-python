@@ -182,7 +182,7 @@ Ex().has_import("numpy", same_as = False)
 
 Ex().test_correct(
   has_printout(0),
-  test_correct(
+  F().test_correct(
     check_object('np_height').has_equal_value(),
     check_function('numpy.array').check_args(0).has_equal_value()
   )
@@ -291,7 +291,7 @@ Ex().test_correct(
 patt = "You need to use `%s` in your calculation of `bmi`"
 Ex().test_correct(
   has_printout(0),
-  test_correct(
+  F().test_correct(
     check_object('bmi').has_equal_value(),
     multi(
       has_code('np_weight_kg', not_typed_msg = patt % 'np_weight_kg'),
@@ -659,7 +659,7 @@ Ex().test_correct(
         has_printout(0),
         has_printout(1)
     ),
-    test_correct(
+    F().test_correct(
         check_object('np_baseball').has_equal_value(),
         check_function('numpy.array').check_args(0).has_equal_value()
     )
@@ -735,7 +735,7 @@ Ex().has_import("numpy", same_as = False)
 
 Ex().test_correct(
     has_printout(0),
-    test_correct(
+    F().test_correct(
         check_object('np_baseball').has_equal_value(),
         check_function('numpy.array').check_args(0).has_equal_ast()
     )
@@ -947,7 +947,7 @@ Ex().has_printout(0)
 
 Ex().test_correct(
     has_printout(1),
-    test_correct(
+    F().test_correct(
         check_object('conversion').has_equal_value(),
         check_function('numpy.array', index = 1).check_args(0).has_equal_value()
     )    
@@ -1289,17 +1289,17 @@ Ex().test_correct(
         has_printout(1)
     ),
     multi(
-        test_correct(
+        F().test_correct(
             multi(
                 check_object('gk_heights').has_equal_value(incorrect_msg=msg_gk_heights),
                 check_object('other_heights').has_equal_value(incorrect_msg=msg_other_heights)
             ),
             multi(
-                test_correct(
+                F().test_correct(
                     check_object("np_positions").has_equal_value(incorrect_msg="Assign the converted numpy array of `positions` to `np_positions`."),
                     check_function('numpy.array', index=0).check_args(0).has_equal_value(incorrect_msg="Use `positions`.")
                 ),
-                test_correct(
+                F().test_correct(
                     check_object("np_heights").has_equal_value(incorrect_msg="Assign the converted numpy array of `heights` to `np_heights`."),
                     check_function('numpy.array', index=1).check_args(0).has_equal_value(incorrect_msg="Use `heights`.")
                 )
